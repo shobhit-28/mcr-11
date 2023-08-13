@@ -1,5 +1,5 @@
 export const WatchlistPage = () => {
   return (
-    <div>WatchlistPage</div>
+    <div className="page">WatchlistPage</div>
   )
 }
