@@ -6,16 +6,21 @@ export const DataContext = createContext()
 
 export const DataHandler = ({children}) => {
 
-    const initialState = {
-        movieData: movies,
-    }
+    const [data, setData] = useState(movies)
 
-    // eslint-disable-next-line no-unused-vars
-    const [data, setData] = useState(initialState)
+    const addToWatchList = videoID => {
+        setData(data.map((movie) => movie.id === videoID ? {...movie, watchlist: true} : movie ))
+    }
+    
+    const removeFromWatchList = videoID => {
+        setData(data.map((movie) => movie.id === videoID ? {...movie, watchlist: false} : movie ))
+    }
 
     return (
         <DataContext.Provider value={{
-            data: data.movieData
+            data,
+            addToWatchList,
+            removeFromWatchList
         }}>
             {children}
         </DataContext.Provider>
