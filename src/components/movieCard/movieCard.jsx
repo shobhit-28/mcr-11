@@ -4,9 +4,12 @@ import { useContext } from "react"
 import { DataContext } from "../../context/dataContext"
 
 import { AiFillClockCircle, AiOutlineClockCircle } from "react-icons/ai"
+import { useNavigate } from "react-router-dom"
 
 export const MovieCard = ({ movie }) => {
     const { addToWatchList, removeFromWatchList } = useContext(DataContext)
+
+    const nav = useNavigate()
 
     const addToWatchListClickHandler = event => {
         event.stopPropagation()
@@ -19,7 +22,7 @@ export const MovieCard = ({ movie }) => {
     }
 
     return (
-        <div className="w-[17rem] relative shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] duration-700 hover:shadow-[rgba(0,_0,_0,_0.5)_0px_8px_18px] rounded-lg overflow-hidden flex flex-col justify-between pb-2 cursor-pointer">
+        <div className="w-[17rem] relative shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] duration-700 hover:shadow-[rgba(0,_0,_0,_0.5)_0px_8px_18px] rounded-lg overflow-hidden flex flex-col justify-between pb-2 cursor-pointer" onClick={() => nav(`/vid/${movie.id}`)}>
             <div className="w-[17rem]">
                 <img src={movie.imageURL} alt={movie.title} />
             </div>
