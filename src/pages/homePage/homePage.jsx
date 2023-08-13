@@ -24,9 +24,18 @@ export const HomePage = () => {
     return (
         <div className="page">
             <input type="text" name="" id="" placeholder="Search" className="border outline-none py-2 px-4 my-6 w-full rounded-3xl text-center text-lg font-medium" onChange={(event) => searchMovies(event)} />
-            <div className="flex flex-wrap gap-6">
-                {searchData.map((data, index) => <MovieCard movie={data} key={index} />)}
-            </div>
+            {searchData.length > 0
+                ?
+                <div className="flex flex-wrap gap-6">
+                    {searchData.map((data, index) => <MovieCard movie={data} key={index} />)}
+                </div>
+                :
+                <div className="w-full h-[55vh] flex justify-center items-center">
+                    <p className="text-2xl font-semibold">
+                        NOT FOUND
+                    </p>
+                </div>
+            }
         </div>
     )
 }
